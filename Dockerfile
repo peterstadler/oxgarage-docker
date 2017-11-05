@@ -24,6 +24,9 @@ RUN mkdir "$JETTY_WEBAPPS"/ege-webservice \
     && unzip -q /tmp/ege-webservice.war -d "$JETTY_WEBAPPS"/ege-webservice/ \
     && rm /tmp/ege-webservice.war
 RUN apk --update add libreoffice \
+    ttf-dejavu \
+    ttf-linux-libertine \ 
+    font-noto \
     && ln -s $OFFICE_HOME /usr/lib/openoffice 
 
 RUN chown -R jetty:jetty /var/cache/oxgarage \
