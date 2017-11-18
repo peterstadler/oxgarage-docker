@@ -51,6 +51,12 @@ RUN apk --update add libreoffice \
     font-noto \
     && ln -s $OFFICE_HOME /usr/lib/openoffice 
 
+COPY webservice_web.xml "$JETTY_WEBAPPS"/ege-webservice/WEB-INF/web.xml
+
+# add some Jetty jars needed for CORS support
+ADD http://central.maven.org/maven2/org/eclipse/jetty/jetty-servlets/9.4.7.v20170914/jetty-servlets-9.4.7.v20170914.jar "$JETTY_WEBAPPS"/ege-webservice/WEB-INF/lib/
+ADD http://central.maven.org/maven2/org/eclipse/jetty/jetty-util/9.4.7.v20170914/jetty-util-9.4.7.v20170914.jar "$JETTY_WEBAPPS"/ege-webservice/WEB-INF/lib/
+
 RUN chown -R jetty:jetty /var/cache/oxgarage \
     "$JETTY_WEBAPPS"/*
 
