@@ -12,12 +12,23 @@ Install [Docker](https://www.docker.com) for your OS, change into the root direc
 
 This will create an image with the tag "oxgarage".
 
+## Dependencies
+
+For running the image you'll need to have the TEI Stylesheets as well as the TEI P5 sources.
+There are several ways to obtain these (see "Get and install a local copy" at http://www.tei-c.org/Guidelines/P5/),  
+one of them is to download the latest release of both 
+[TEI](https://github.com/TEIC/TEI/releases) and [Stylesheets](https://github.com/TEIC/Stylesheets/releases) from GitHub.
+
 ## Run
 
 To run the image, enter
 
 ```
-# docker run -p 8080:8080 --rm --name oxgarage oxgarage:latest        
+# docker run --rm \
+    -p 8080:8080
+    -v /your/path/to/Stylesheets:/usr/share/xml/tei/stylesheet \ 
+    -v /your/path/to/TEI/P5:/usr/share/xml/tei/odd \
+    --name oxgarage oxgarage:latest
 ``` 
 
 This will run the image and propagate the container port 8080 to your local port 8080.
