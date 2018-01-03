@@ -28,7 +28,14 @@ To run the image, enter
     -p 8080:8080
     -v /your/path/to/Stylesheets:/usr/share/xml/tei/stylesheet \ 
     -v /your/path/to/TEI/P5:/usr/share/xml/tei/odd \
+    -e WEBSERVICE_URL=http://localhost:8080/ege-webservice/   
     --name oxgarage oxgarage:latest
 ``` 
 
 This will run the image and propagate the container port 8080 to your local port 8080.
+
+### available parameters
+
+* **WEBSERVICE_URL** : The full URL of the RESTful *web service*. 
+    This is relevant for the *web client* (aka the GUI) if you are running the docker container on a different port
+    or with a different URL.
